@@ -12,7 +12,7 @@ var ExamView = new Vue({
     },
 
     ready: function () {
-        this.getExam(1).then(
+        this.getExam(currentExamId).then(
 
             // Success callback
             function (response) {
@@ -130,7 +130,7 @@ var ExamView = new Vue({
                 // Success
                 function () {
                     // Save the entry
-                    this.postRequest("Entries/1", {
+                    this.postRequest("Entries/" + currentExamId, {
                         ExamId: 1,
                         ExamineeId: 1,
                         SubmittedAt: "2016-10-25 12:00:00",
