@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Exam";
+}
+
+@section scripts {
+    
+    @Scripts.Render("~/bundles/vue")
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+    @Scripts.Render("~/bundles/main")   
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-push-2">
+
+            <div id="app" v-cloak>
+                <div class="page-header">
+                    <h1 class="text-center">{{ Exam.Title }}</h1>
+                </div>
+
+                <form method="POST">
+
+                    <h3 class="text-center">{{ Section.Title }}</h3>
+                    <h4 class="text-center">{{ currentSection }} of {{ totalSectionsCount }}</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ completedPercentage }}"
+                             aria-valuemin="0" aria-valuemax="100"  v-bind:style="{ width: (completedPercentage + '%') }">
+                            <span class="sr-only">{{ completedPercentageRounded }}% Complete</span>
+                        </div>
+                    </div>
+
+                    <div v-for="(index, Section) in Exam.Sections" v-bind:class="{ hidden: !isCurrentSectionIndex(index) }" class="section">
+
+                        <div v-if="willShowLoader">
+                            <div class="overlay">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group question-{{ Question.QuestionId }}" v-for="Question in Section.Questions">
+                            <label>{{ Question.Label }} <span v-if="Question.Required" class="text-danger">*</span></label>
+
+                            <div class="form-input" v-if="(Question.QuestionType.Name == 'multiple_choice')">
+                                <div class="radio" v-for="Option in Question.QuestionOptions">
+                                    <label>
+                                        <input v-model="answers[Question.QuestionId]" type="radio" value="{{ Option.OptionChoice.OptionChoiceId }}" />
+                                        {{ Option.OptionChoice.Name }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-input" v-if="(Question.QuestionType.Name == 'input')">
+                                <textarea v-model="answers[Question.QuestionId]" class="form-control" v-bind:required="Question.Required" rows="5"></textarea>
+                            </div>
+
+                            <div class="form-input" v-if="(Question.QuestionType.Name == 'true_false')">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" value="true" v-model="answers[Question.QuestionId]" />
+                                        True
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" value="false" v-model="answers[Question.QuestionId]" />
+                                        False
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-input" v-if="(Question.QuestionType.Name == 'checklist')">
+                                <div class="checkbox" v-for="(optionIndex, Option) in Question.QuestionOptions">
+                                    <label>
+                                        <input v-model="answers[Question.QuestionId][Option.OptionChoice.OptionChoiceId]" type="checkbox" value="{{ Option.OptionChoice.OptionChoiceId }}" />
+                                        {{ Option.OptionChoice.Name }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <ul class="list-unstyled text-danger">
+                                <li v-for="Error in Question.Errors"><small>{{ Error }}</small></li>
+                            </ul>
+                        </div>
+
+                        <p class="clearfix">
+                            <a v-on:click.prevent="goToPrev()" v-bind:class="{ hidden: isFirstSection() }" class="pull-left btn btn-primary btn-lg">Previous</a>
+                            <a v-on:click.prevent="goToNext()" v-bind:class="{ hidden: isLastSection() }" class="pull-right btn btn-primary btn-lg">Next</a>
+                            <a v-on:click.prevent="submit()" v-bind:class="{ hidden: !isLastSection() }" class="pull-right btn btn-primary btn-lg">Finish</a>
+                        </p>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
