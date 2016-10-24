@@ -131,9 +131,8 @@ var ExamView = new Vue({
                 function () {
                     // Save the entry
                     this.postRequest("Entries/" + currentExamId, {
-                        ExamId: 1,
+                        ExamId: currentExamId,
                         ExamineeId: 1,
-                        SubmittedAt: "2016-10-25 12:00:00",
                         Answers: this.getAllAnswers()
                     }).then(
                         function (resp) {

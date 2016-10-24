@@ -44,12 +44,21 @@ namespace Maxe.DAL.Models
         public virtual Exam Exam { get; set; }
 
         /**
+         * Gets or sets the time stamp.
+         *
+         * @return  The time stamp.
+         */
+        [Timestamp]
+        public Byte[] TimeStamp { get; set; }
+
+        /**
          * Gets or sets the Date/Time of the created at.
          *
          * @return  The created at.
          */
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [DataMember]
-        public DateTime SubmittedAt { get; set; }
+        public DateTime? SubmittedAt { get; set; }
 
         /**
          * Gets or sets the identifier of the examinee.

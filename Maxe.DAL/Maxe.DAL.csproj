@@ -123,6 +123,14 @@
     <Compile Include="Migrations\201610240535437_RequireFields.Designer.cs">
       <DependentUpon>201610240535437_RequireFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610242332555_AddTimestampToEntry.cs" />
+    <Compile Include="Migrations\201610242332555_AddTimestampToEntry.Designer.cs">
+      <DependentUpon>201610242332555_AddTimestampToEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610242338530_AutoTimeStampForEntries.cs" />
+    <Compile Include="Migrations\201610242338530_AutoTimeStampForEntries.Designer.cs">
+      <DependentUpon>201610242338530_AutoTimeStampForEntries.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\AnswerItem.cs" />
@@ -165,6 +173,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610240535437_RequireFields.resx">
       <DependentUpon>201610240535437_RequireFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610242332555_AddTimestampToEntry.resx">
+      <DependentUpon>201610242332555_AddTimestampToEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610242338530_AutoTimeStampForEntries.resx">
+      <DependentUpon>201610242338530_AutoTimeStampForEntries.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
