@@ -269,5 +269,6 @@ __pycache__/
 # tools/
 
 # TypeScript
+Scripts/
 Scripts/*.js.map
 Scripts/typings

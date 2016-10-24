@@ -271,3 +271,26 @@ __pycache__/
 # TypeScript
 Scripts/*.js.map
 Scripts/typings
+
+#Ignore generated files
+Maxe.Client/Scripts/*
+!Maxe.Client/Scripts/App/
+Maxe.Client/Content/*
+!Maxe.Client/Content/App/
+Maxe.Client/fonts/*
+!Maxe.Client/fonts/App/
+
+Maxe.Api/Scripts/*
+!Maxe.Api/Scripts/App/
+Maxe.Api/Content/*
+!Maxe.Api/Content/App/
+Maxe.Api/fonts/*
+!Maxe.Api/fonts/App/
+
+Maxe.DAL/Scripts/*
+!Maxe.DAL/Scripts/App/
+Maxe.DAL/Content/*
+!Maxe.DAL/Content/App/
+Maxe.DAL/fonts/*
+!Maxe.DAL/fonts/App/
+
