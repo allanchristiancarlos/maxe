@@ -19,7 +19,9 @@ namespace Maxe.Client
             bundles.Add(new ScriptBundle("~/bundles/knockout")
                 .Include("~/Scripts/knockout-*"));
             bundles.Add(new ScriptBundle("~/bundles/vue")
-                .Include("~/Scripts/vue.js"));
+                .Include("~/Scripts/vue.js")
+                .Include("~/bower_components/vue-resource/dist/vue-resource.js"));
+
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

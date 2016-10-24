@@ -1,3 +1,6 @@
 {
-	"name": "allancarlos/maxe"
+  "name": "maxe/client",
+  "dependencies": {
+    "vue-resource": "^1.0.3"
+  }
 }

@@ -271,3 +271,6 @@ __pycache__/
 # TypeScript
 Scripts/*.js.map
 Scripts/typings
+
+#bower
+bower_components/
