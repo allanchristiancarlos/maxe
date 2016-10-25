@@ -14,13 +14,14 @@ namespace Maxe.Client
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/main")
-                .Include("~/Scripts/App/main.js"));
-            bundles.Add(new ScriptBundle("~/bundles/knockout")
-                .Include("~/Scripts/knockout-*"));
-            bundles.Add(new ScriptBundle("~/bundles/vue")
+
+            // Exams/Take
+            bundles.Add(new ScriptBundle("~/bundles/Exams/Take")
                 .Include("~/Scripts/vue.js")
-                .Include("~/bower_components/vue-resource/dist/vue-resource.js"));
+                .Include("~/bower_components/vue-resource/dist/vue-resource.js")
+                .Include("~/bower_components/moment/min/moment.min.js")
+                .Include("~/Scripts/App/Exams/Take.js"));
+            
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -34,7 +35,7 @@ namespace Maxe.Client
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/App/style.css"));
+                      "~/Content/App/Exams/Take.css"));
         }
     }
 }

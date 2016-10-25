@@ -131,6 +131,14 @@
     <Compile Include="Migrations\201610242338530_AutoTimeStampForEntries.Designer.cs">
       <DependentUpon>201610242338530_AutoTimeStampForEntries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610250032369_AddExamineeDetailsToTheEntry.cs" />
+    <Compile Include="Migrations\201610250032369_AddExamineeDetailsToTheEntry.Designer.cs">
+      <DependentUpon>201610250032369_AddExamineeDetailsToTheEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610250148048_AddDurationToEntry.cs" />
+    <Compile Include="Migrations\201610250148048_AddDurationToEntry.Designer.cs">
+      <DependentUpon>201610250148048_AddDurationToEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\AnswerItem.cs" />
@@ -179,6 +187,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610242338530_AutoTimeStampForEntries.resx">
       <DependentUpon>201610242338530_AutoTimeStampForEntries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610250032369_AddExamineeDetailsToTheEntry.resx">
+      <DependentUpon>201610250032369_AddExamineeDetailsToTheEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610250148048_AddDurationToEntry.resx">
+      <DependentUpon>201610250148048_AddDurationToEntry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

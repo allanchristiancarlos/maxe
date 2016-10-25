@@ -8,10 +8,13 @@ var ExamView = new Vue({
         Sections: [],
         answers: [],
         willShowLoader: false,
-        Section: {}
+        Section: {},
+        isFormSubmitting: false,
+        errors: {}
     },
 
     ready: function () {
+
         this.getExam(currentExamId).then(
 
             // Success callback
@@ -129,24 +132,16 @@ var ExamView = new Vue({
 
                 // Success
                 function () {
-                    // Save the entry
-                    this.postRequest("Entries/" + currentExamId, {
-                        ExamId: currentExamId,
-                        ExamineeId: 1,
-                        Answers: this.getAllAnswers()
-                    }).then(
-                        function (resp) {
-                            this.removeSectionErrors(this.currentSectionIndex);
-                            // Reset storage
-                            this.setInitialStorage();
-                            window.location = window.location;
-                        }.bind(this),
 
-                        function (resp) {
-                            alert(resp.body);
-                            this.hideLoader();
-                        }
-                    );
+                    // Remove errors
+                    this.removeSectionErrors(this.currentSectionIndex);
+
+                    // Show the Examinee details form
+                    $('#examineeModal').modal({ backdrop: 'static', keyboard: false });
+
+                    
+
+                    this.hideLoader()
 
                     
                 }.bind(this),
@@ -157,6 +152,37 @@ var ExamView = new Vue({
                     this.hideLoader();
                 }.bind(this)
                 );
+        },
+
+        saveEntry: function () {
+            this.isFormSubmitting = true;
+
+            // Save the entry
+            this.postRequest("Entries/" + currentExamId, {
+                ExamId: currentExamId,
+                Answers: this.getAllAnswers(),
+                FirstName: this.firstName,
+                LastName: this.lastName,
+                Email: this.email,
+                MobileNumber: this.mobileNumber,
+                Position: this.position,
+                Address: this.address
+            }).then(
+
+                function (res) {
+                    this.isFormSubmitting = false;
+                    this.setInitialStorage();
+                    alert("Your test was sucessfully submitted!");
+                    window.location = window.location;
+                }.bind(this),
+
+
+                function (res) {
+                    this.isFormSubmitting = false;
+                    this.errors = res.body.ModelState;
+
+                }.bind(this)
+            );
         },
 
         showLoader: function() {

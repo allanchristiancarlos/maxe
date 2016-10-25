@@ -8,7 +8,7 @@ namespace Maxe.DAL.Migrations
         public override void Up()
         {
             AddColumn("dbo.Entries", "TimeStamp", c => c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"));
-            AlterColumn("dbo.Entries", "SubmittedAt", c => c.DateTime());
+            AlterColumn("dbo.Entries", "SubmittedAt", c => c.DateTime(nullable: false, defaultValueSql: "GETUTCDATE()"));
         }
         
         public override void Down()

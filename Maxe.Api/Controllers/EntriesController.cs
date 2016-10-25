@@ -21,7 +21,6 @@ namespace Maxe.Api.Controllers
         {
             return db.Entries
                 .Include(e => e.Answers.Select(a => a.AnswerItems))
-                .Include(e => e.Examinee)
                 .Include(e => e.Exam);
         }
 
