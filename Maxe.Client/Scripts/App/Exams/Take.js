@@ -153,6 +153,12 @@ var ExamView = new Vue({
                 }.bind(this)
                 );
         },
+        
+        getTotalTime: function () {
+            var start = moment(this.getStorage("startTime"));
+            var end = moment(new Date());
+            return moment.duration(end.diff(start)).minutes();
+        },
 
         saveEntry: function () {
             this.isFormSubmitting = true;
@@ -166,7 +172,8 @@ var ExamView = new Vue({
                 Email: this.email,
                 MobileNumber: this.mobileNumber,
                 Position: this.position,
-                Address: this.address
+                Address: this.address,
+                DurationInMinutes: this.getTotalTime()
             }).then(
 
                 function (res) {
@@ -230,6 +237,7 @@ var ExamView = new Vue({
             this.setStorage("storageIsSet", true);
             this.setStorage("currentSectionIndex", 0);
             this.setStorage("answers", JSON.stringify([]));
+            this.setStorage("startTime", moment().format());
         },
 
         setStorage: function (key, data) {
