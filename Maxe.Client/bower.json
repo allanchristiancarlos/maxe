@@ -1,6 +1,7 @@
 {
   "name": "maxe/client",
   "dependencies": {
-    "vue-resource": "^1.0.3"
+    "vue-resource": "^1.0.3",
+    "moment": "^2.15.2"
   }
 }
