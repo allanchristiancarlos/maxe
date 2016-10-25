@@ -229,11 +229,19 @@ var ExamView = new Vue({
             }
         },
 
-        isStorageSet: function() {
+        isStorageSet: function () {
+            // Check if user visits a exam and answers but not submitted then 
+            // change to another exam
+            // in this case reset the localstorage
+            if (this.getStorage("currentExamId") != currentExamId) {
+                return false;
+            }
+
             return this.getStorage("storageIsSet");
         },
 
-        setInitialStorage: function() {
+        setInitialStorage: function () {
+            this.setStorage("currentExamId", currentExamId);
             this.setStorage("storageIsSet", true);
             this.setStorage("currentSectionIndex", 0);
             this.setStorage("answers", JSON.stringify([]));
