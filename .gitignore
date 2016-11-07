@@ -294,3 +294,5 @@ Maxe.DAL/Content/*
 Maxe.DAL/fonts/*
 !Maxe.DAL/fonts/App/
 
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
